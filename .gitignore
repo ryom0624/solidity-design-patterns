@@ -10,4 +10,4 @@ cache
 artifacts
 
 /deployments/*
-!/deployments/.chainId
+!/deployments/*/.chainId
