@@ -9,10 +9,15 @@ if (process.env.PRIVATE_KEY) {
   networks.rinkeby = {
     chainId: 4,
     url: process.env.RINKEBY_RPC,
-    accounts: [process.env.PRIVATE_KEY]
+    accounts: [process.env.PRIVATE_KEY],
+  };
+  networks.goerli = {
+    chainId: 5,
+    url: process.env.RINKEBY_RPC,
+    accounts: [process.env.PRIVATE_KEY],
   };
 } else {
-  networks.hardhat = {}
+  networks.hardhat = {};
 }
 
 export default networks;
