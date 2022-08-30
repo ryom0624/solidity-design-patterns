@@ -9,5 +9,5 @@ typechain-types
 cache
 artifacts
 
-/deployments/*
-!/deployments/*/.chainId
+/deployments/localhost/*
+!/deployments/localhost/.chainId
