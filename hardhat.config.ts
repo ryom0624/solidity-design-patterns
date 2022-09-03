@@ -1,12 +1,19 @@
+import dotenv from "dotenv";
+dotenv.config();
+
+// import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-waffle";
+import "@nomiclabs/hardhat-ethers";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "hardhat-deploy";
-// import "@nomiclabs/hardhat-etherscan";
 import { HardhatUserConfig } from "hardhat/config";
+
 import networks from "./networks";
-import dotenv from "dotenv";
-dotenv.config();
+
+import "./tasks/balance";
+import "./tasks/accounts";
+import "./tasks/block-number";
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -19,7 +26,7 @@ const config: HardhatUserConfig = {
   },
   networks,
   namedAccounts: {
-    deployer: 0
+    deployer: 0,
   },
   solidity: {
     version: "0.8.9",
