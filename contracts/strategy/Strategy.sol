@@ -15,6 +15,13 @@ contract FlyNoWay is FlyBehavior {
     }
 }
 
+// add impl
+contract FlyRocketPowered is FlyBehavior {
+    function fly() external pure returns(string memory) {
+        return "Flying by Rocket!!";
+    }
+}
+
 contract Quack is QuackBehavior {
     function quack() external pure returns (string memory) {
         return "quack!!!";

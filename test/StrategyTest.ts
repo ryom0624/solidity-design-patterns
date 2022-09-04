@@ -6,6 +6,7 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import {
   FlyWithWing,
   FlyNoWay,
+  FlyRocketPowered,
   Quack,
   Squack,
   MuteQuack,
@@ -21,6 +22,7 @@ describe("Duck Strategy Pattern", async () => {
 
   let flyWithWing: FlyWithWing;
   let flyNoWay: FlyNoWay;
+  let flyRocketPowered: FlyRocketPowered;
   let quack: Quack;
   let squack: Squack;
   let muteQuack: MuteQuack;
@@ -33,6 +35,7 @@ describe("Duck Strategy Pattern", async () => {
   beforeEach(async () => {
     const { FlyWithWing } = await deployments.fixture(["FlyWithWing"]);
     const { FlyNoWay } = await deployments.fixture(["FlyNoWay"]);
+    const { FlyRocketPowered } = await deployments.fixture(["FlyRocketPowered"]); // add impl
     const { Quack } = await deployments.fixture(["Quack"]);
     const { Squack } = await deployments.fixture(["Squack"]);
     const { MuteQuack } = await deployments.fixture(["MuteQuack"]);
@@ -44,6 +47,11 @@ describe("Duck Strategy Pattern", async () => {
 
     flyWithWing = (await ethers.getContractAt("FlyWithWing", FlyWithWing.address, signer)) as FlyWithWing;
     flyNoWay = (await ethers.getContractAt("FlyNoWay", FlyNoWay.address, signer)) as FlyNoWay;
+    flyRocketPowered = (await ethers.getContractAt(
+      "FlyRocketPowered",
+      FlyRocketPowered.address,
+      signer
+    )) as FlyRocketPowered;
     quack = (await ethers.getContractAt("Quack", Quack.address, signer)) as Quack;
     squack = (await ethers.getContractAt("Squack", Squack.address, signer)) as Squack;
     muteQuack = (await ethers.getContractAt("MuteQuack", MuteQuack.address, signer)) as MuteQuack;
@@ -89,5 +97,10 @@ describe("Duck Strategy Pattern", async () => {
 
     expect(await rubberDuck.performQuack()).to.be.equal("squack!!!");
     expect(await decoyDuck.performQuack()).to.be.equal("mute quack");
+  });
+
+  it("rubber duck flies by rocket", async () => {
+    await rubberDuck.setFlyBehavior(flyRocketPowered.address);
+    expect(await rubberDuck.performFly()).to.be.equal("Flying by Rocket!!");
   });
 });
