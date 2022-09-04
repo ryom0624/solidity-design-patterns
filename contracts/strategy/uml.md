@@ -1,5 +1,12 @@
 # Strategy Pattern
 
+> strategy pattern (also known as the policy pattern) is a behavioral software design pattern that enables selecting an algorithm at runtime.
+> https://en.wikipedia.org/wiki/Strategy_pattern
+
+Requirements
+
+- FlyRocketPowered is a new implementation by specification changed
+
 ```mermaid
 classDiagram
 
@@ -43,8 +50,12 @@ classDiagram
     class FlyNoWay {
         fly()
     }
+    class FlyRocketPowered {
+        fly()
+    }
     FlyBehavior <|-- FlyWithWing : implements
     FlyBehavior <|-- FlyNoWay : implements
+    FlyBehavior <|-- FlyRocketPowered : implements
 
     class QuackBehavior {
         <<interface>>
