@@ -128,8 +128,8 @@ classDiagram
     Duck <|-- RedheadDuck : Inheritance
     Duck <|-- RubberDuck : Inheritance
     Duck <|-- DecoyDuck : Inheritance
-    Duck --* FlyBehavior : Composition
-    Duck --* QuackBehavior : Composition
+    Duck --o FlyBehavior : Aggregation
+    Duck --o QuackBehavior : Aggregation
 
     class FlyBehavior {
         <<interface>>
