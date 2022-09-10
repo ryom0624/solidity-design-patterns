@@ -5,6 +5,37 @@
 
 新聞の定期購読のイメージ（publisher / subscriber の関係）
 
+# Observer のクラス図
+
+```mermaid
+classDiagram
+
+    ConcreateSubject <|-- Subject: Implements
+    ConcreateObserver <|-- Observer: Implements
+    Subject "0" --> "n" Observer
+    class ConcreateSubject{
+        +registereObserver()
+        +remoceObserver()
+        +notifyObserver()
+        +getState()
+        +setState()
+    }
+    class Subject{
+        <<interface>>
+        +registereObserver()
+        +remoceObserver()
+        +notifyObserver()
+    }
+    class ConcreateObserver{
+        +update()
+    }
+    class Observer{
+        <<interface>>
+        +update()
+        +otherFunctions()
+    }
+```
+
 # 例
 
 気象データの表示アプリケーション
@@ -15,7 +46,7 @@
 
 将来的には 3 つ以外の表示もでてくる予想。
 
-# よくある間違い設計
+## よくある間違い設計
 
 - WrongObserverWeatherData が具象実装に対して依存しているため、コードのを変更せずに他の表示要素の追加、削除ができない。
 
@@ -71,36 +102,7 @@ classDiagram
 
 ```
 
-Observer のクラス図
-
-```mermaid
-classDiagram
-
-    ConcreateSubject <|-- Subject: Implements
-    ConcreateObserver <|-- Observer: Implements
-    Subject "0" --> "n" Observer
-    class ConcreateSubject{
-        +registereObserver()
-        +remoceObserver()
-        +notifyObserver()
-        +getState()
-        +setState()
-    }
-    class Subject{
-        <<interface>>
-        +registereObserver()
-        +remoceObserver()
-        +notifyObserver()
-    }
-    class ConcreateObserver{
-        +update()
-    }
-    class Observer{
-        <<interface>>
-        +update()
-        +otherFunctions()
-    }
-```
+## Observer にした例
 
 ・サブジェクトはオブザーバーがある特定のインターフェースを実装しているということだけ知っている。
 
