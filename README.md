@@ -6,4 +6,5 @@ Reference
 
 ## Impl
 
-- [Strategy Pattern](https://github.com/ryom0624/solidity-design-patterns/blob/master/contracts/strategy/uml.md)
+- [Strategy Pattern](https://github.com/ryom0624/solidity-design-patterns/blob/master/contracts/strategy/strategy.md)
+- [Observer Pattern](https://github.com/ryom0624/solidity-design-patterns/blob/master/contracts/strategy/observer.md)
